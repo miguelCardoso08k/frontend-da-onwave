@@ -29,9 +29,14 @@ export default function FormCreateUser() {
     },
   });
   const submit = async (data) => {
-    const res = await createEmployee(data,user.id,user.barbershopId,user.token)
+    const res = await createEmployee(
+      data,
+      user.id,
+      user.barbershopId,
+      user.token
+    );
     console.log(res);
-  }
+  };
 
   return (
     <Form {...form}>

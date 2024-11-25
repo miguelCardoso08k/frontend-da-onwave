@@ -210,12 +210,12 @@ export default function ServiceScreen() {
               />
             </DialogTrigger>
             <DialogContent className="flex items-center justify-center flex-col transition-all duration-300 ease-in-out w-11/12 rounded-lg">
-              <h2 className="text-xl font-bold text-gray-800 mb-3 text-center">
-                Registre o seu próximo atendimento.
-              </h2>
-              <span className="text-base font-bold text-gray-600/50 text-justify w-full p-2 ">
-                A data e o horário serão adicionados automaticamente.
-              </span>
+              <DialogHeader>
+                <DialogTitle>Registre o seu próximo atendimento.</DialogTitle>
+                <DialogDescription>
+                  Atente-se aos dados do atendimento
+                </DialogDescription>
+              </DialogHeader>
 
               <form className="space-y-4">
                 <div className="space-y-2">

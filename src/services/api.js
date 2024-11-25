@@ -46,6 +46,7 @@ export const createEmployee = async (data, id, barbershopId, token) => {
       adminId: id,
       barbershopId,
     }),
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -60,6 +61,7 @@ export const getMyUser = async (id, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -76,6 +78,7 @@ export const getEmployees = async (id, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -97,6 +100,7 @@ export const updateFixedPayment = async (id, token, employeeId, value) => {
       body: JSON.stringify({
         value,
       }),
+      cache: "no-store",
     }
   );
 
@@ -124,6 +128,7 @@ export const updateCommissionProcedure = async (
       body: JSON.stringify({
         value,
       }),
+      cache: "no-store",
     }
   );
 
@@ -146,6 +151,7 @@ export const updateCommissionProduct = async (id, token, employeeId, value) => {
       body: JSON.stringify({
         value,
       }),
+      cache: "no-store",
     }
   );
 
@@ -166,6 +172,7 @@ export const updateCellphone = async (id, token, value) => {
     body: JSON.stringify({
       value,
     }),
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -185,6 +192,7 @@ export const updatePassword = async (id, token, value) => {
     body: JSON.stringify({
       value,
     }),
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -200,6 +208,7 @@ export const deleteEmployee = async (id, token, employeeId) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -207,4 +216,135 @@ export const deleteEmployee = async (id, token, employeeId) => {
   const data = await res.json();
 
   return data.user;
+};
+
+//PRODUTOS
+export const createProduct = async (data, id, barbershopId, token) => {
+  const { name, weight, nameWeight, cost, price, workTop, stock, categoryId } =
+    data;
+  const res = await fetch(
+    `${url}/user/${id}/barbershop/${barbershopId}/createProduct`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        weight,
+        nameWeight,
+        cost,
+        price,
+        workTop: workTop === "Sim" ? true : false,
+        stock,
+        categoryId,
+      }),
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  return await res.json();
+};
+
+export const getProducts = async (id, token, barbershopId) => {
+  const res = await fetch(
+    `${url}/user/${id}/barbershop/${barbershopId}/products`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  const data = await res.json();
+
+  return data.result;
+};
+
+export const getProductsByName = async (id, token, barbershopId, name) => {
+  const res = await fetch(
+    `${url}/user/${id}/barbershop/${barbershopId}/products/${name}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  const data = await res.json();
+
+  return data.result;
+};
+
+export const deleteProduct = async (id, token, barbershopId, productId) => {
+  const res = await fetch(
+    `${url}/user/${id}/barbershop/${barbershopId}/products/${productId}/`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  const data = await res.json();
+
+  return data.result;
+};
+
+//stock
+export const stockIn = async (id, token, productId, data) => {
+  const { quantity, description } = data;
+  const res = await fetch(`${url}/user/${id}/products/${productId}/stock/in`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      quantity,
+      description,
+    }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  return await res.json();
+};
+
+export const stockOut = async (id, token, productId, data) => {
+  const { quantity, description } = data;
+  const res = await fetch(`${url}/user/${id}/products/${productId}/stock/out`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      quantity,
+      description,
+    }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  return await res.json();
 };
