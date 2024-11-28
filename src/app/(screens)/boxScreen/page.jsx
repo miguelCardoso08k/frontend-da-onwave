@@ -43,7 +43,7 @@ export default async function BoxScreen() {
             className="bg-transparent  absolute right-3 text-gray-500 cursor-pointe hover:bg-transparent"
           >
             <Image
-              src="/pesquisa.png" // Substitua pelo caminho do seu ícone de lupa
+              src="/pesquisa.png" 
               alt="Buscar"
               width={20}
               height={20}
@@ -81,153 +81,107 @@ export default async function BoxScreen() {
             </p>
           ) : (
             products.map((product) => (
-              <Dialog key={product.id}>
-                <DialogTrigger>
-                  <div className="p-4">
-                    <div className="items-center justify-center bg-white shadow-lg p-4 rounded-lg ">
-                      <div className="flex flex-col">
-                        <div className="flex items-center ">
-                          <Image
-                            src="/caixabox.png"
-                            alt="Caixa Box"
-                            width={32}
-                            height={32}
-                          />
-                          <div className="ml-4 flex-1">
-                            <div className="text-lg font-semibold text-black">
-                              {product.name}
-                            </div>
-                            <div className="text-sm text-gray-600">
-                              Quantidade: {product.stock}
-                            </div>
-                          </div>
-                          <div>
-                            <button className="flex flex-col">
-                              <Image
-                                src="/check.png"
-                                alt="novolote"
-                                className="pb-4"
-                                width={24}
-                                height={24}
-                              />
-                            </button>
-                            {/* Botão para abrir pop-up de edição */}
-                            <Dialog>
-                              <DialogTrigger>
-                                <Image
-                                  src="/editar.png"
-                                  alt="Editar"
-                                  width={24}
-                                  height={24}
-                                />
-                              </DialogTrigger>
-                              <DialogContent className="w-11/12 flex flex-col justify-between rounded-lg items-center">
-                                <DialogHeader>
-                                  <DialogTitle> Editar meu produto</DialogTitle>
-                                  <DialogDescription>
-                                    <h1 className="text-lg text-red-500 font-serif font-bold">
-                                      Página em desenvolvimento
-                                    </h1>
-                                  </DialogDescription>
-                                </DialogHeader>
-                                <input
-                                  type="search"
-                                  placeholder="Nome do produto"
-                                  className="mt-3 mb-4 w-[268.04px] h-[44.55px] bg-white rounded-[19px] text-black text-[15px] font-bold pl-10 pr-10 border-2 border-[#008fd7] focus:outline-none"
-                                />
-                                {/* Input de número */}
-                                <input
-                                  type="number"
-                                  placeholder="0000"
-                                  className="mb-6 w-[70px] h-[50px] bg-white rounded-lg border-2 border-[#008fd7] focus:outline-none justify-end items-center text-center text-[#61646b] text-sm font-normal"
-                                />
-                                {/* Botão de enviar */}
-                                <button className="w-[268.04px] h-[44.55px] px-9 py-6 bg-[#008fd7] rounded-[40px] justify-center items-center gap-2 inline-flex text-center text-white text-lg font-bold leading-[18px] mb-6">
-                                  Mudar
-                                </button>
-                              </DialogContent>
-                            </Dialog>
-                            {/* Botão para abrir pop-up de exclusão */}
-                            <Dialog>
-                              <DialogTrigger className="flex flex-col">
-                                <Image
-                                  src="/lixeira.png"
-                                  alt="Excluir"
-                                  className="pt-4"
-                                  width={24}
-                                  height={24}
-                                />
-                              </DialogTrigger>
-                              <DialogContent className="w-11/12 flex flex-col justify-between rounded-lg items-center ">
-                                <DialogHeader>
-                                  <DialogTitle> Excluir produto</DialogTitle>
-                                  <DialogDescription>
-                                    Essa ação não poderá ser revertida.
-                                  </DialogDescription>
-                                </DialogHeader>
-                                <DeleteButtonProducts
-                                  id={session.id}
-                                  token={session.token}
-                                  barbershopId={session.barbershopId}
-                                  productId={product.id}
-                                >
-                                  Tenho certeza
-                                </DeleteButtonProducts>
-                                {/* Botão de desistir */}
-                                <DialogClose className=" px-6 py-2 bg-black rounded-lg  text-white">
-                                  Desistir
-                                </DialogClose>
-                              </DialogContent>
-                            </Dialog>
-                          </div>
+              <div className="p-4" key={product.id}>
+                <div className="items-center justify-center bg-white shadow-lg p-4 rounded-lg ">
+                  <div className="flex flex-col">
+                    <div className="flex items-center ">
+                      <Image
+                        src="/caixabox.png"
+                        alt="Caixa Box"
+                        width={32}
+                        height={32}
+                      />
+                      <div className="ml-4 flex-1">
+                        <div className="text-lg font-semibold text-black">
+                          {product.name}
                         </div>
+                        <div className="text-sm text-gray-600">
+                          Quantidade: {product.stock}
+                        </div>
+                      </div>
+                      <div>
+                        <button className="flex flex-col">
+                          <Image
+                            src="/check.png"
+                            alt="novolote"
+                            className="pb-4"
+                            width={24}
+                            height={24}
+                          />
+                        </button>
+                        {/* Botão para abrir pop-up de edição */}
+                        <Dialog>
+                          <DialogTrigger>
+                            <Image
+                              src="/editar.png"
+                              alt="Editar"
+                              width={24}
+                              height={24}
+                            />
+                          </DialogTrigger>
+                          <DialogContent className="w-11/12 flex flex-col justify-between rounded-lg items-center">
+                            <DialogHeader>
+                              <DialogTitle> Editar meu produto</DialogTitle>
+                              <DialogDescription>
+                                <h1 className="text-lg text-red-500 font-serif font-bold">
+                                  Página em desenvolvimento
+                                </h1>
+                              </DialogDescription>
+                            </DialogHeader>
+                            <input
+                              type="search"
+                              placeholder="Nome do produto"
+                              className="mt-3 mb-4 w-[268.04px] h-[44.55px] bg-white rounded-[19px] text-black text-[15px] font-bold pl-10 pr-10 border-2 border-[#008fd7] focus:outline-none"
+                            />
+                            {/* Input de número */}
+                            <input
+                              type="number"
+                              placeholder="0000"
+                              className="mb-6 w-[70px] h-[50px] bg-white rounded-lg border-2 border-[#008fd7] focus:outline-none justify-end items-center text-center text-[#61646b] text-sm font-normal"
+                            />
+                            {/* Botão de enviar */}
+                            <button className="w-[268.04px] h-[44.55px] px-9 py-6 bg-[#008fd7] rounded-[40px] justify-center items-center gap-2 inline-flex text-center text-white text-lg font-bold leading-[18px] mb-6">
+                              Mudar
+                            </button>
+                          </DialogContent>
+                        </Dialog>
+                        {/* Botão para abrir pop-up de exclusão */}
+                        <Dialog>
+                          <DialogTrigger className="flex flex-col">
+                            <Image
+                              src="/lixeira.png"
+                              alt="Excluir"
+                              className="pt-4"
+                              width={24}
+                              height={24}
+                            />
+                          </DialogTrigger>
+                          <DialogContent className="w-11/12 flex flex-col justify-between rounded-lg items-center ">
+                            <DialogHeader>
+                              <DialogTitle> Excluir produto</DialogTitle>
+                              <DialogDescription>
+                                Essa ação não poderá ser revertida.
+                              </DialogDescription>
+                            </DialogHeader>
+                            <DeleteButtonProducts
+                              id={session.id}
+                              token={session.token}
+                              barbershopId={session.barbershopId}
+                              productId={product.id}
+                            >
+                              Tenho certeza
+                            </DeleteButtonProducts>
+                            {/* Botão de desistir */}
+                            <DialogClose className=" px-6 py-2 bg-black rounded-lg  text-white">
+                              Desistir
+                            </DialogClose>
+                          </DialogContent>
+                        </Dialog>
                       </div>
                     </div>
                   </div>
-                  <DialogContent className="w-11/12 flex flex-col justify-between rounded-lg">
-                    <DialogHeader>
-                      <DialogTitle>
-                        <h1 className="text-lg font-bold text-blue-700 ">
-                          {product.name}
-                        </h1>
-                      </DialogTitle>
-                      <DialogDescription className="text-center items-center">
-                        Faça seu chekout!
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="bg-blue-100/50 p-4 rounded-lg shadow-md border-2 border-blue-600 hover:shadow-lg transition-shadow">
-                      <div className="flex flex-col gap-1">
-                        <div className="text-gray-700 flex flex-col items-start w-full">
-                          <h3 className="text-gray-700 text-xl font-semibold">
-                            Serviços:
-                          </h3>
-                        </div>
-                        <div className="text-gray-700 flex flex-col items-start w-full">
-                          <h3 className="text-gray-700 text-xl font-semibold">
-                            Produtos:
-                          </h3>
-                        </div>
-                        <hr className="bg-blue-600 h-[2px] mt-3" />
-                        <div className="w-full flex justify-between">
-                          <h3 className="text-gray-700 text-xl font-bold">
-                            Total:
-                          </h3>
-                          <span className="text-gray-700 text-xl font-semibold">
-                            R$ {product.price.toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <DialogClose asChild>
-                        <Link href="/boxScreen">
-                          <Button variant="destructive">Voltar</Button>
-                        </Link>
-                      </DialogClose>
-                    </DialogFooter>
-                  </DialogContent>
-                </DialogTrigger>
-              </Dialog>
+                </div>
+              </div>
             ))
           )}
         </div>
