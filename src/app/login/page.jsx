@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import RememberPassword from "@/components/ui/rememberPassword";
 
 export default function Login() {
   return (
@@ -29,37 +30,7 @@ export default function Login() {
         />
         <LoginForm />
 
-        <Dialog>
-          <DialogTrigger
-            className=" w-[232px] h-[25px] text-center text-black/80 text-[15px]
-        font-bold "
-          >
-            Esqueci minha senha
-          </DialogTrigger>
-          <DialogContent className="flex items-center justify-center flex-col transition-all duration-300 ease-in-out w-11/12 rounded-lg">
-            <DialogHeader>
-              <DialogTitle></DialogTitle>
-              <DialogDescription>Atualize sua senha</DialogDescription>
-            </DialogHeader>
-            <div className="flex gap-3 items-center">
-              <label htmlFor="cellphone">Senha</label>
-
-              <Input
-                type="password"
-                placeholder="Digite sua nova senha"
-                className="pr-12 pl-4 rounded-full border-2"
-              />
-            </div>
-
-            <DialogFooter className=" w-full">
-              <div className="flex justify-center">
-                <Button className="bg-blue-600 hover:bg-blue-700 font-semibold">
-                  Salvar
-                </Button>
-              </div>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+        <RememberPassword />
       </div>
     </div>
   );

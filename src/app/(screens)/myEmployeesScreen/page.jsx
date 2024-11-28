@@ -12,7 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import EditEmployee from "@/components/ui/editEmployee";
-import { deleteEmployee, getEmployees } from "@/services/api";
+import { getEmployees } from "@/services/api";
 import { getServerSession } from "next-auth";
 import { nextAuthOptions } from "@/app/api/auth/[...nextauth]/route";
 import {
@@ -25,7 +25,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { DeleteButton } from "@/components/ui/DeleteButton";
+import { DeleteButton } from "@/components/ui/deleteButton";
 
 export default async function MyEmployeesScreen() {
   const user = await getServerSession(nextAuthOptions);

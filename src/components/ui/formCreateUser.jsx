@@ -14,8 +14,10 @@ import {
 } from "./form";
 import { useSession } from "next-auth/react";
 import { createEmployee } from "@/services/api";
+import { useRouter } from "next/navigation";
 
 export default function FormCreateUser() {
+  const router = useRouter();
   const user = useSession().data;
   const form = useForm({
     defaultValues: {
@@ -35,7 +37,9 @@ export default function FormCreateUser() {
       user.barbershopId,
       user.token
     );
-    console.log(res);
+    if (res) {
+      router.push("/myEmployeesScreen");
+    }
   };
 
   return (

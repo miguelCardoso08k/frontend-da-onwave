@@ -47,7 +47,9 @@ export default function EditEmployee({ id, token, employeeId }) {
         employeeId,
         fixedPayment
       );
-      setFixedPayment(0);
+      if (result) {
+        window.location.reload();
+      }
     } catch (error) {
       console.error("Erro ao atualizar os dados:", error);
       alert("Erro ao atualizar os dados");
@@ -63,7 +65,9 @@ export default function EditEmployee({ id, token, employeeId }) {
         commissionProcedure
       );
 
-      setCommissionProcedure(0);
+      if (result) {
+        window.location.reload();
+      }
     } catch (error) {
       console.error("Erro ao atualizar os dados:", error);
       alert("Erro ao atualizar os dados");
@@ -79,7 +83,9 @@ export default function EditEmployee({ id, token, employeeId }) {
         commissionProduct
       );
 
-      setCommissionProduct(0);
+      if (result) {
+        window.location.reload();
+      }
     } catch (error) {
       console.error("Erro ao atualizar os dados:", error);
       alert("Erro ao atualizar os dados");

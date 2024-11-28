@@ -9,8 +9,10 @@ export const DeleteButtonProducts = ({
   productId,
 }) => {
   const handleDelete = async () => {
-    const result = await deleteProduct(id, token, barbershopId, productId);
-    console.log(result);
+    const res = await deleteProduct(id, token, barbershopId, productId);
+    if (res) {
+      window.location.reload();
+    }
   };
 
   return (

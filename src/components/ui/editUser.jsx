@@ -1,5 +1,5 @@
 "use client";
-import { getSession, signIn } from "next-auth/react";
+
 import Image from "next/image";
 import {
   Dialog,
@@ -31,15 +31,15 @@ export default function EditUser() {
   };
 
   const handleSavePassword = async () => {
-    const result = await updatePassword(user.id, user.token, password);
-    console.log(result);
-    setPassword("");
+    const res = await updatePassword(user.id, user.token, password);
+    console.log(res);
+    window.location.reload();
   };
 
   const handleSaveCellphone = async () => {
-    const result = await updateCellphone(user.id, user.token, cellphone);
-    console.log(result);
-    setCellphone("");
+    const res = await updateCellphone(user.id, user.token, cellphone);
+    console.log(res);
+    window.location.reload();
   };
 
   return (

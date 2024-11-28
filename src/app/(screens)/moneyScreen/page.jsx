@@ -20,6 +20,7 @@ export default function MoneyScreen() {
         {/* Contéudo da div azul (opcional) */}
       </div>
       <div className="absolute left-1/2 top-12 w-[274px] h-20 bg-white rounded-[14px] shadow-inner flex items-center px-4 transform -translate-x-1/2">
+   
         <span className="text-left font-semibold text-xl text-black mr-4">
           R$ 00.00
         </span>

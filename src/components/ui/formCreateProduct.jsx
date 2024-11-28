@@ -23,8 +23,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./select";
+import { useRouter } from "next/navigation";
 
 export default function FormCreateProduct() {
+  const router = useRouter();
   const user = useSession().data;
   const form = useForm({
     defaultValues: {
@@ -45,7 +47,9 @@ export default function FormCreateProduct() {
       user.barbershopId,
       user.token
     );
-    console.log(res);
+    if (res) {
+      router.push("/boxScreen");
+    }
   };
 
   return (

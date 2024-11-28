@@ -29,7 +29,7 @@ export default function ServiceScreen() {
       pagamento_servico: 23.6,
     },
     {
-      cliente: "João da Silva",
+      cliente: "Carlos Almeida",
       data: "01/09/2024",
       servico: [
         { name: "Dregade", id: 1 },
@@ -43,7 +43,7 @@ export default function ServiceScreen() {
       pagamento_servico: 23.6,
     },
     {
-      cliente: "João da Silva",
+      cliente: "Igor Taváres",
       data: "01/09/2024",
       servico: [
         { name: "Dregade", id: 1 },
@@ -57,7 +57,7 @@ export default function ServiceScreen() {
       pagamento_servico: 23.6,
     },
     {
-      cliente: "João da Silva",
+      cliente: "Lucas Pereira",
       data: "01/09/2024",
       servico: [
         { name: "Dregade", id: 1 },

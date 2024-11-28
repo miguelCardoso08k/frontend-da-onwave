@@ -88,6 +88,24 @@ export const getEmployees = async (id, token) => {
   return data.result;
 };
 
+export const rememberPassword = async (email) => {
+  const res = await fetch(`${url}/rememberPassword`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  if (!res.ok) throw new Error("Erro ao fazer a requisição");
+
+  const data = await res.json();
+
+  return data.user;
+};
+
 export const updateFixedPayment = async (id, token, employeeId, value) => {
   const res = await fetch(
     `${url}/user/${id}/employees/${employeeId}/fixedPayment`,
@@ -100,7 +118,6 @@ export const updateFixedPayment = async (id, token, employeeId, value) => {
       body: JSON.stringify({
         value,
       }),
-      cache: "no-store",
     }
   );
 
@@ -128,7 +145,6 @@ export const updateCommissionProcedure = async (
       body: JSON.stringify({
         value,
       }),
-      cache: "no-store",
     }
   );
 
@@ -151,7 +167,6 @@ export const updateCommissionProduct = async (id, token, employeeId, value) => {
       body: JSON.stringify({
         value,
       }),
-      cache: "no-store",
     }
   );
 
@@ -172,7 +187,6 @@ export const updateCellphone = async (id, token, value) => {
     body: JSON.stringify({
       value,
     }),
-    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -192,7 +206,6 @@ export const updatePassword = async (id, token, value) => {
     body: JSON.stringify({
       value,
     }),
-    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
@@ -208,14 +221,13 @@ export const deleteEmployee = async (id, token, employeeId) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
 
   const data = await res.json();
 
-  return data.user;
+  return data.result;
 };
 
 //PRODUTOS
@@ -240,7 +252,6 @@ export const createProduct = async (data, id, barbershopId, token) => {
         stock,
         categoryId,
       }),
-      cache: "no-store",
     }
   );
 
@@ -290,6 +301,7 @@ export const getProductsByName = async (id, token, barbershopId, name) => {
 };
 
 export const deleteProduct = async (id, token, barbershopId, productId) => {
+  console.log(id, token, barbershopId, productId);
   const res = await fetch(
     `${url}/user/${id}/barbershop/${barbershopId}/products/${productId}/`,
     {
@@ -300,7 +312,7 @@ export const deleteProduct = async (id, token, barbershopId, productId) => {
       cache: "no-store",
     }
   );
-
+  console.log(res);
   if (!res.ok) throw new Error("Erro ao fazer a requisição");
 
   const data = await res.json();
@@ -321,7 +333,6 @@ export const stockIn = async (id, token, productId, data) => {
       quantity,
       description,
     }),
-    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erro ao fazer a requisição");

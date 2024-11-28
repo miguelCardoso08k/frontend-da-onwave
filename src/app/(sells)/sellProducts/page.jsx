@@ -26,6 +26,9 @@ const products = servicesAndProducts.filter((item) => item.type === "product");
 export default function sellProducts() {
   return (
     <>
+      <h1 className="text-lg text-red-500 font-serif font-bold">
+        Página em desenvolvimento
+      </h1>
       <div className="flex flex-col items-center justify-center gap-6">
         {/* Título */}
 
