@@ -55,7 +55,7 @@ export const createEmployee = async (data, id, barbershopId, token) => {
 };
 
 export const getMyUser = async (id, token) => {
-  const res = await fetch(`${url}/user/${id}`, {
+  const res = await fetch(`${url}/dev/user/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -63,8 +63,6 @@ export const getMyUser = async (id, token) => {
     },
     cache: "no-store",
   });
-
-  if (!res.ok) throw new Error("Erro ao fazer a requisição");
 
   const data = await res.json();
 

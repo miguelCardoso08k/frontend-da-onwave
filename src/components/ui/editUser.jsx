@@ -109,7 +109,7 @@ export default function EditUser() {
               <DialogDescription>Atualize sua senha</DialogDescription>
             </DialogHeader>
             <div className="flex gap-3 items-center">
-              <label htmlFor="cellphone">Senha</label>
+              <label htmlFor="password">Senha</label>
               <Input
                 type="password"
                 placeholder="Digite sua nova senha"

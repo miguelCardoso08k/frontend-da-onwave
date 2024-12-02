@@ -1,4 +1,5 @@
 import { nextAuthOptions } from "@/app/api/auth/[...nextauth]/route";
+import FirstLogin from "@/components/ui/firstLogin";
 
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -25,6 +26,7 @@ export default async function HomeScreen() {
           </div>
         </Link>
       </div>
+      <FirstLogin id={user.id} token={user.token} />
       <div className="flex justify-center items-center min-h-screen flex-col">
         <div className="w-[300px] h-[250px] fixed top-[130px] bg-white flex flex-col  items-center rounded-[13px] shadow-lg ">
           <Image

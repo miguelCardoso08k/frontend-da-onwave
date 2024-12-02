@@ -65,7 +65,7 @@ export default function SaleScreen() {
           />
           <span className="absolute right-3 text-gray-500 cursor-pointer">
             <Image
-              src="/pesquisa.png" 
+            src="/pesquisa.png" 
               alt="Buscar"
               width={20}
               height={20}
